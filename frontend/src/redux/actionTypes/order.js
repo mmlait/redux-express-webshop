@@ -1,0 +1,5 @@
+export const CLEAR_CART = 'order/CLEAR_CART';
+export const ADD_PRODUCT_TO_ORDER = 'order/ADD_PRODUCT_TO_ORDER';
+export const UPDATE_QUANTITY = 'order/UPDATE_QUANTITY';
+export const REMOVE_PRODUCT_FROM_CART = 'order/REMOVE_PRODUCT_FROM_CART';
+

@@ -1,4 +1,4 @@
-
+<pre>
                                               Webshop
                                         _____________________
 
@@ -37,7 +37,6 @@ password: customer123
 Public routes:
 
 POST http://127.0.0.1:2000/api/users/register
-
 POST http://127.0.0.1:2000/api/users/authenticate
 
 
@@ -49,21 +48,13 @@ POST http://127.0.0.1:2000/api/users/register
 HEADER: Content-type: application/json
 
 BODY: 
-
 { 
-
   "password": "admin12345",
-
   "firstName": "Anna",
-
   "lastName": "Andersson",
-
   "email": "anna@testEmployee.com",
-
   "role": 1,
-
   "balance": 0
-
 }
 
 
@@ -71,67 +62,42 @@ BODY:
 --- Mongoose User Schema ---
 
 const schema = new Schema({
-
   hash: { type: String, required: true },
-
   email: { type: String, unique: true, required: true },
-
   firstName: { type: String, required: true },
-
   lastName: { type: String, required: true },
-
   createdDate: { type: Date, default: Date.now },
-
   role: { type: Number, required: true, default: 0 },
-
   isAdmin: { type: Boolean, required: true, default: false },
-
   balance: { type: Float, required: true }
-
 });
-
 
 
 --- Mongoose Company Schema ---
 
 const schema = new Schema({
-
   companyName: { type: String, unique: true, required: true },
-
   companyBalance: { type: Float, required: true },
-
   createdDate: { type: Date, default: Date.now }
-
 });
-
 
 
 --- Mongoose Product Schema ---
 
 const schema = new Schema({
-
   productName: { type: String, unique: true, required: true },
-
   price: { type: Float, required: true },
-
   quantity: { type: Number, required: true, default: 0 },
-
   createdDate: { type: Date, default: Date.now }
-
 });
-
 
 
 --- Mongoose Order Schema ---
 
 const schema = new Schema({
-
   order: { type: Array, required: true },
-
   customer: { type: Array, required: true },
-
   totalAmount: { type: Float, required: true },
-
   createdDate: { type: Date, default: Date.now }
-  
 });
+</pre>

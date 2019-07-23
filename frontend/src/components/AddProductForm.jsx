@@ -85,7 +85,6 @@ let AddProductForm = ({ handleSubmit, toggleAddProductModal }) => {
       <StyledField 
         name="productName" id="productName" 
         component={customAddProductField} 
-        autoComplete="off"
         type="text"
       /><br/>
       <label htmlFor="price">Price: ($)</label><br/>

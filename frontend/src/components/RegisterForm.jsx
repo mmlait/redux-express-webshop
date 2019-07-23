@@ -54,6 +54,7 @@ const customField = ({
   type,
   placeholder,
   id,
+  autoComplete,
   className,
   meta: { touched, error }
 }) => {
@@ -63,6 +64,7 @@ const customField = ({
         placeholder={placeholder} 
         type={type} 
         id={id} 
+        autoComplete={autoComplete}
         className={className}/>
         {touched && error && <p style={{ color: colors.fontRed }}>{error}</p>}
     </div>
@@ -74,18 +76,42 @@ let RegisterForm = ({ handleSubmit, toggleLoginAndRegisterFormsAction }) => {
     <RegisterFormWrapper onSubmit={handleSubmit}>
       <h3>Register</h3>
       <label htmlFor="firstName">First Name:</label><br/>
-      <StyledField name="firstName" id="firstName" component={customField} type="text" autoComplete="off" /><br/>
+      <StyledField 
+        name="firstName" 
+        id="firstName" 
+        component={customField} 
+        type="text" /><br/>
       <label htmlFor="lastName">Last Name:</label><br/>
-      <StyledField name="lastName" id="lastName" component={customField} type="text" autoComplete="off" /><br/>
+      <StyledField 
+        name="lastName" 
+        id="lastName" 
+        component={customField} 
+        type="text" /><br/>
       <label htmlFor="setEmail">Email:</label><br/>
-      <StyledField name="email" id="setEmail" component={customField} type="email" autoComplete="off" /><br/>
+      <StyledField 
+        name="email" 
+        id="setEmail" 
+        component={customField} 
+        type="email" /><br/>
       <label htmlFor="setPassword">Password:</label><br/>
-      <StyledField name="password" id="setPassword" component={customField} type="password" /><br/>
+      <StyledField 
+        name="password" 
+        id="setPassword" 
+        component={customField} 
+        type="password" /><br/>
       <PasswordLengthNotice>Your password must be at least 10 characters long.</PasswordLengthNotice><br/>
       <label htmlFor="confirmPassword">Confirm Password:</label><br/>
-      <StyledField name="confirmPassword" id="confirmPassword" component={customField} type="password" /><br/>
+      <StyledField 
+        name="confirmPassword" 
+        id="confirmPassword" 
+        component={customField} 
+        type="password" /><br/>
       <label htmlFor="employee">Employee</label>
-      <Field name="employee" id="employee" component="input" type="checkbox"/>
+      <Field 
+        name="employee" 
+        id="employee" 
+        component="input" 
+        type="checkbox"/>
       <Div>
         <ButtonLight 
           content={'Register'}
@@ -122,10 +148,8 @@ const validator = values => {
       } else if (values.password.length < 10) {
         errors.password = 'Password is too short!';
       } else if (values.password !== values.confirmPassword) {
-          if (values.confirmPassword <=10) {
-            errors.password = 'Check password!';
-            errors.confirmPassword = 'Check password!';
-          }
+          errors.password = 'Check password!';
+          errors.confirmPassword = 'Check password!';
         }
     return errors;
   };

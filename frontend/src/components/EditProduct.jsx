@@ -69,7 +69,6 @@ let EditProductForm = ({ handleSubmit, toggleEditProductModal }) => {
         <StyledField 
           name="productName" id="productName" 
           component={customEditProductField} 
-          autoComplete="off"
           type="text" 
         /><br/>
         <label htmlFor="price">Price: ($)</label><br/>

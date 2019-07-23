@@ -77,7 +77,6 @@ let LoginForm = ({ handleSubmit, toggleLoginAndRegisterFormsAction }) =>{
         name="email" 
         id="email" 
         component={customLoginField} 
-        autoComplete="off"
         type="email" /><br/>
       <label htmlFor="password">Password:</label><br/>
       <StyledField 

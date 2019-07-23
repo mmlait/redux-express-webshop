@@ -40,6 +40,7 @@ const customEditProductField = ({
   type,
   placeholder,
   id,
+  autoComplete,
   className,
   meta: { touched, error }
 }) => {
@@ -50,6 +51,7 @@ const customEditProductField = ({
         type={type} 
         id={id} 
         step="0.01"
+        autoComplete={autoComplete}
         className={className}/>
         {touched && error && <p style={{ color: colors.fontRed}}>{error}</p>}
     </div>
@@ -67,6 +69,7 @@ let EditProductForm = ({ handleSubmit, toggleEditProductModal }) => {
         <StyledField 
           name="productName" id="productName" 
           component={customEditProductField} 
+          autoComplete="off"
           type="text" 
         /><br/>
         <label htmlFor="price">Price: ($)</label><br/>

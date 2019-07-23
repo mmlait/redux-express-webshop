@@ -50,6 +50,7 @@ const customLoginField = ({
   type,
   placeholder,
   id,
+  autoComplete,
   className,
   meta: { touched, error }
 }) => {
@@ -59,6 +60,7 @@ const customLoginField = ({
         placeholder={placeholder} 
         type={type} 
         id={id} 
+        autoComplete={autoComplete}
         className={className}/>
         {touched && error && <p style={{ color: colors.fontRed }}>{error}</p>}
     </div>
@@ -71,9 +73,18 @@ let LoginForm = ({ handleSubmit, toggleLoginAndRegisterFormsAction }) =>{
     <LoginFormWrapper onSubmit={handleSubmit}>
       <LightHeading>Sign in</LightHeading>
       <label htmlFor="email">Email:</label><br/>
-      <StyledField name="email" id="email" component={customLoginField} type="email" /><br/>
+      <StyledField 
+        name="email" 
+        id="email" 
+        component={customLoginField} 
+        autoComplete="off"
+        type="email" /><br/>
       <label htmlFor="password">Password:</label><br/>
-      <StyledField name="password" id="password" component={customLoginField} type="password" /><br/>
+      <StyledField 
+        name="password" 
+        id="password" 
+        component={customLoginField} 
+        type="password" /><br/>
       <Div>
         <ButtonLight 
           content={'Login'}

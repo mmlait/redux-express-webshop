@@ -8,6 +8,7 @@ When a customer purchases products, the money is transferred to the company acco
 After the purchase, the customer will receive an order confirmation email. Product quantities are updated after purchase. Once a day, $100 in store credit will be transferred to the clients' account.
 Employees can add, remove, and edit products. 
 
+![employee-gif](/images/employee-gif.gif)
 
                                             Documentation
                                         ______________________

@@ -56,6 +56,7 @@ const customAddProductField = ({
   type,
   placeholder,
   id,
+  autoComplete,
   className,
   meta: { touched, error }
 }) => {
@@ -65,6 +66,7 @@ const customAddProductField = ({
         placeholder={placeholder} 
         type={type} 
         id={id} 
+        autoComplete={autoComplete}
         step="0.01"
         className={className}/>
         {touched && error && <p style={{ color: colors.fontRed}}>{error}</p>}
@@ -83,6 +85,7 @@ let AddProductForm = ({ handleSubmit, toggleAddProductModal }) => {
       <StyledField 
         name="productName" id="productName" 
         component={customAddProductField} 
+        autoComplete="off"
         type="text"
       /><br/>
       <label htmlFor="price">Price: ($)</label><br/>

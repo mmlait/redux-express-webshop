@@ -2,14 +2,16 @@
                                               Webshop
                                         _____________________
 
-The frontend is built with React/Redux, and the backend using Express. Information is stored in a NoSQL (MongoDB) database.
+The frontend is built with React/Redux, and the backend using Express. Information is stored 
+in a NoSQL (MongoDB) database.
 
 When a customer purchases products, the money is transferred to the company account. 
-After the purchase, the customer will receive an order confirmation email. Product quantities are updated after purchase. Once a day, $100 in store credit will be transferred to the clients' account.
+After the purchase, the customer will receive an order confirmation email. Product quantities are 
+updated after purchase. Once a day, $100 in store credit will be transferred to the clients' account.
 Employees can add, remove, and edit products. 
-</pre>
-![employee-account-gif](employee-gif.gif)
-<pre>
+
+<img src="employee-gif.gif" width="350"/>
+
                                             Documentation
                                         ______________________
 

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PurchasedNotification should render PurchasedNotification component 1`] = `
+<div
+  className="sc-bxivhb cWBDwX"
+>
+  <div
+    className="sc-ifAKCX eBLFKN"
+  >
+    <h2
+      className="sc-bdVaJa emjykE"
+    >
+      Thank you for purchasing!
+    </h2>
+  </div>
+</div>
+`;

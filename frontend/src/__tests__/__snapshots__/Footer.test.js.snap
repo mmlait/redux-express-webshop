@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`My first snapshot test should render Footer component 1`] = `
+<footer
+  className="sc-bdVaJa hlRHXh"
+>
+  <span>
+    ©2019 Miia Laitinen
+  </span>
+</footer>
+`;

@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductAddedNotification component should render 1`] = `
+exports[`AddedToCartNotification component should render 1`] = `
 <div
   className="sc-bdVaJa gtzOcq"
 >
   <p>
-    A new product was added!
+    Product added to cart!
   </p>
 </div>
 `;

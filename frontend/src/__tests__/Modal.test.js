@@ -1,10 +1,10 @@
 import React from 'react';
+import Modal from '../components/Modal';
 import { create } from 'react-test-renderer'
-import Footer from '../components/Footer';
 
-describe('Footer component', () => {
+describe('Modal component', () => {
     it('should render', () => {
-    let tree = create(<Footer />)
+    let tree = create(<Modal />)
     expect(tree.toJSON()).toMatchSnapshot();
   })
 })

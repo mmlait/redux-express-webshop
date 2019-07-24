@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ButtonLight should render ButtonLight component 1`] = `
+exports[`ButtonLight component should render 1`] = `
 <button
   className="sc-bdVaJa ecCyz"
 />

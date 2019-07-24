@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button should render Button component 1`] = `
+exports[`Button component should render 1`] = `
 <button
   className="sc-bdVaJa kXhGps"
 />

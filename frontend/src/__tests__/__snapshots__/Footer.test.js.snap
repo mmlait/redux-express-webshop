@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`My first snapshot test should render Footer component 1`] = `
+exports[`Footer component should render 1`] = `
 <footer
   className="sc-bdVaJa hlRHXh"
 >

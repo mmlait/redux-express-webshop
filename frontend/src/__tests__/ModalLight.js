@@ -1,10 +1,10 @@
 import React from 'react';
+import ModalLight from '../components/ModalLight';
 import { create } from 'react-test-renderer'
-import Footer from '../components/Footer';
 
-describe('Footer component', () => {
+describe('ModalLight component', () => {
     it('should render', () => {
-    let tree = create(<Footer />)
+    let tree = create(<ModalLight />)
     expect(tree.toJSON()).toMatchSnapshot();
   })
 })

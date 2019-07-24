@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PurchasedNotification should render PurchasedNotification component 1`] = `
+exports[`PurchasedNotification component should render 1`] = `
 <div
   className="sc-bxivhb cWBDwX"
 >

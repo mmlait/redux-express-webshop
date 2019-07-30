@@ -1,18 +1,18 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { signOutUserAction } from '../../../redux/actions/user';
-import * as UserActionTypes from '../../../redux/actionTypes/user';
+import { togglePurchasedNotificationAction } from '../../../redux/actions/ui';
+import * as UiActionTypes from '../../../redux/actionTypes/ui';
 
 const middlewares = [thunk]
 const mockStore = configureStore(middlewares);
 
-describe('signOutUserAction', () => {
+describe('togglePurchasedNotificationAction', () => {
   it('should dispatch the correct action', async () => {
     const store = mockStore({});
-    const expectedAction = { 
-      type: UserActionTypes.SIGN_OUT_USER 
+    const expectedAction = {
+        type: UiActionTypes.SHOW_PURCHASED_NOTIFICATION
     };
-    await store.dispatch(signOutUserAction());
+    await store.dispatch(togglePurchasedNotificationAction());
     const action = store.getActions();
     expect(action[0].type).toEqual(expectedAction.type);
   });

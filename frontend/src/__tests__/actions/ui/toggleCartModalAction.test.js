@@ -1,18 +1,18 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { signOutUserAction } from '../../../redux/actions/user';
-import * as UserActionTypes from '../../../redux/actionTypes/user';
+import { toggleCartModalAction } from '../../../redux/actions/ui';
+import * as UiActionTypes from '../../../redux/actionTypes/ui';
 
 const middlewares = [thunk]
 const mockStore = configureStore(middlewares);
 
-describe('signOutUserAction', () => {
+describe('toggleCartModalAction', () => {
   it('should dispatch the correct action', async () => {
     const store = mockStore({});
-    const expectedAction = { 
-      type: UserActionTypes.SIGN_OUT_USER 
+    const expectedAction = {
+        type: UiActionTypes.SHOW_CART_MODAL
     };
-    await store.dispatch(signOutUserAction());
+    await store.dispatch(toggleCartModalAction());
     const action = store.getActions();
     expect(action[0].type).toEqual(expectedAction.type);
   });

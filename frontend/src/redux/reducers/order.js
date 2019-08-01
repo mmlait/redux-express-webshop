@@ -37,7 +37,7 @@ export default function Order(state=initialState, action) {
           return {
             product: {
               ...product.product,
-              amount: action.quantity,
+              amount: action.amount,
               subtotal: action.subtotal
             }
           }

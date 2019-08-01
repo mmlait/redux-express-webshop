@@ -19,7 +19,7 @@ describe('updateQuantityOrderAction', () => {
     const expectedAction = {
         type: OrderActionTypes.UPDATE_QUANTITY,
         productId: props.productId,
-        quantity: props.newAmount,
+        amount: props.newAmount,
         subtotal: props.newSubtotal,
         totalAmount: props.newTotalAmount
     };
@@ -27,7 +27,7 @@ describe('updateQuantityOrderAction', () => {
     const action = store.getActions();
     expect(action[0].type).toEqual(expectedAction.type);
     expect(action[0].productId).toEqual(expectedAction.productId);
-    expect(action[0].quantity).toEqual(expectedAction.quantity);
+    expect(action[0].amount).toEqual(expectedAction.amount);
     expect(action[0].subtotal).toEqual(expectedAction.subtotal);
     expect(action[0].totalAmount).toEqual(expectedAction.totalAmount);
   });

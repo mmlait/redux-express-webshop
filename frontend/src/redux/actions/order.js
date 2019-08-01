@@ -18,7 +18,7 @@ export const updateQuantityOrderAction = (productId, newAmount, newSubtotal, new
   return {
     type: OrderActionTypes.UPDATE_QUANTITY,
     productId: productId,
-    quantity: newAmount,
+    amount: newAmount,
     subtotal: newSubtotal,
     totalAmount: newTotalAmount
   };

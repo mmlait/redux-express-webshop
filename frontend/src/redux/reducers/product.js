@@ -19,7 +19,7 @@ export default function Product(state=initialState, action) {
     case ProductActionTypes.PRODUCT_WANTED_TO_UPDATE: {
       return {
         ...state,
-        productToBeUpdated: action.product
+        productToBeUpdated: action.productToBeUpdated
       };
     }
 

@@ -1,13 +1,12 @@
-import User from '../../../redux/reducers/user';
+import Company from '../../../redux/reducers/company';
 
-describe('User reducer', () => {
+describe('Company reducer', () => {
   const initialState = {
-    user: {},
-    isLoggedIn: false
+    company: {}
   }
   
   it('should return the initial state when an action type is not passed',  () => {
-    const reducer = User(undefined, {});
+    const reducer = Company(undefined, {});
     expect(reducer).toEqual(initialState);
   });
 });

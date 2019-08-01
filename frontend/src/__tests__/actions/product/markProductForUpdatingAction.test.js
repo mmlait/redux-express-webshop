@@ -16,7 +16,7 @@ describe('markProductForUpdatingAction', () => {
     const store = mockStore({});
     const expectedAction = {
       type: ProductActionTypes.PRODUCT_WANTED_TO_UPDATE,
-      product: {
+      productToBeUpdated: {
         productName: name,
         unitPrice: price, 
         quantity: quantity, 

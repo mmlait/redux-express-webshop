@@ -6,7 +6,7 @@ import * as UserActionTypes from '../../../redux/actionTypes/user';
 const middlewares = [thunk]
 const mockStore = configureStore(middlewares);
 
-let newUser = {
+let user = {
   email: 'alex@testCustomer.com',
   firstName: 'Alex',
   lastName: 'Andersson',
@@ -20,9 +20,9 @@ describe('loginUserAction', () => {
     const store = mockStore({});
     const expectedAction = {
       type: UserActionTypes.LOGIN_USER,
-      user: newUser
+      user: user
     };
-    await store.dispatch(loginUserAction(newUser));
+    await store.dispatch(loginUserAction(user));
     const action = store.getActions();
     expect(action[0].type).toEqual(expectedAction.type);
     expect(action[0].user).toEqual(expectedAction.user);

@@ -88,7 +88,7 @@ export default function Ui(state=initialState, action) {
     case UiActionTypes.SET_CUSTOM_NOTIFICATION:
     return {
       ...state,
-      customNotification: action.notification
+      customNotification: action.customNotification
     }
 
     default:

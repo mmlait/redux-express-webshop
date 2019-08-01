@@ -69,6 +69,6 @@ export const toggleCustomNotificationModalAction = () => {
 export const setCustomNotificationAction = (notification) => {
   return {
     type: UiActionTypes.SET_CUSTOM_NOTIFICATION,
-    notification: notification
+    customNotification: notification
   };
 }

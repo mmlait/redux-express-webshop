@@ -11,7 +11,7 @@ describe('unMarkProductForUpdatingAction', () => {
     const store = mockStore({});
     const expectedAction = {
       type: ProductActionTypes.PRODUCT_WANTED_TO_UPDATE,
-      product: {}
+      productToBeUpdated: {}
     };
     await store.dispatch(unMarkProductForUpdatingAction());
     const action = store.getActions();

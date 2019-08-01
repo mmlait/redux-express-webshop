@@ -10,7 +10,7 @@ export const readProductsAction = productList => {
 export const markProductForUpdatingAction = (name, price, quantity, productId) => {
   return {
     type: ProductActionTypes.PRODUCT_WANTED_TO_UPDATE,
-    product: {
+    productToBeUpdated: {
       productName: name,
       unitPrice: price, 
       quantity: quantity, 
@@ -22,6 +22,6 @@ export const markProductForUpdatingAction = (name, price, quantity, productId) =
 export const unMarkProductForUpdatingAction = () => {
   return {
     type: ProductActionTypes.PRODUCT_WANTED_TO_UPDATE,
-    product: {}
+    productToBeUpdated: {}
   };
 }

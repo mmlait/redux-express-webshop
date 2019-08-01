@@ -13,7 +13,7 @@ describe('setCustomNotificationAction', () => {
     const store = mockStore({});
     const expectedAction = {
         type: UiActionTypes.SET_CUSTOM_NOTIFICATION,
-        notification: notification
+        customNotification: notification
     };
     await store.dispatch(setCustomNotificationAction(notification));
     const action = store.getActions();

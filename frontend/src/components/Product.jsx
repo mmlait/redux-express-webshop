@@ -111,7 +111,7 @@ const Product = props => {
   }
 
   return(
-    <ProductContainer>
+    <ProductContainer className="productContainer">
       <Section>
         <DarkHeading>{data.productName}</DarkHeading>
         <p>{priceWithDecimals}$</p>
@@ -133,7 +133,7 @@ const Product = props => {
               </DeleteProductBtn>
             </div>
           ) : (
-            <AddToCartBtn onClick={ () => addProductToOrder(data.id)}>
+            <AddToCartBtn onClick={ () => addProductToOrder(data.id)} className="addToCartBtn">
               <CartIcon />
             </AddToCartBtn>
           )

@@ -48,7 +48,7 @@ const NotificationWrapper = styled.div`
 
 const ProductAddedNotification = () => {
   return (
-    <NotificationWrapper>
+    <NotificationWrapper id="productAddedNotification">
       <p>A new product was added!</p>
     </NotificationWrapper>
   );

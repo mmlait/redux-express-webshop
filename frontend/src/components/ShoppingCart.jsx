@@ -130,8 +130,8 @@ const ShoppingCart = (props) => {
     emptyCart = false;
   }
   return (
-    <div>
-      <CloseModalBtn onClick={toggleCartModal}>
+    <div id="shoppingCart">
+      <CloseModalBtn onClick={toggleCartModal} id="closeCartBtn">
         <StyledCloseIcon id="closeIcon" />
       </CloseModalBtn>
       {

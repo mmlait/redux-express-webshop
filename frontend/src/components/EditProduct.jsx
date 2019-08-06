@@ -60,7 +60,7 @@ const customEditProductField = ({
 
 let EditProductForm = ({ handleSubmit, toggleEditProductModal }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id="editProductForm">
       <HeaderDiv>
         <DarkHeading>Update product</DarkHeading>
         <PencilIcon />

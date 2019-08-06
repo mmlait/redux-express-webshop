@@ -48,7 +48,7 @@ const NotificationWrapper = styled.div`
 
 const AddedToCartNotification = () => {
   return (
-    <NotificationWrapper>
+    <NotificationWrapper data-test="modal">
       <p>Product added to cart!</p>
     </NotificationWrapper>
   );

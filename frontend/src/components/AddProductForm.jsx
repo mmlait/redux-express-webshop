@@ -76,20 +76,22 @@ const customAddProductField = ({
 
 let AddProductForm = ({ handleSubmit, toggleAddProductModal }) => {
   return (
-    <form onSubmit={handleSubmit} >
+    <form onSubmit={handleSubmit} id="addProductForm">
       <HeaderDiv>
         <DarkHeading>Add new product</DarkHeading>
         <PlusCircleIcon />
       </HeaderDiv>
       <label htmlFor="productName">Product Name:</label><br/>
       <StyledField 
-        name="productName" id="productName" 
+        name="productName" 
+        id="productName" 
         component={customAddProductField} 
         type="text"
       /><br/>
       <label htmlFor="price">Price: ($)</label><br/>
       <StyledField 
-        name="price" id="price" 
+        name="price" 
+        id="price" 
         component={customAddProductField} 
         type="number"
         parse={value => Number(value)} 

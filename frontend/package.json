@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "nightwatch": "nightwatch -c src/__tests__/e2e/nightwatch.conf.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -40,8 +41,10 @@
     ]
   },
   "devDependencies": {
+    "chromedriver": "^76.0.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "nightwatch": "^1.1.13",
     "redux-mock-store": "^1.5.3"
   }
 }

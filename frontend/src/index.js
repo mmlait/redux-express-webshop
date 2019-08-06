@@ -9,7 +9,8 @@ import App from './containers/App.jsx';
 
 const composedEnhancers = compose(
   applyMiddleware(thunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  // Uncomment, if you want to use Redux Devtools
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 const store = createStore(

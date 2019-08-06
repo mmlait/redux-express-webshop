@@ -34,7 +34,7 @@ const CustomNotification = (props) => {
   } = props;
 
   return (
-  <ErrorNotificationWrapper>
+  <ErrorNotificationWrapper data-test="modal" id="notificationModal">
     {customNotification}
     <BtnWrapper>
       <ButtonLight 

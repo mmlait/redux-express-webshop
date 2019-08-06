@@ -62,7 +62,7 @@ const MenuModal = (props) => {
   return (
     <Wrapper>
       <CartContent>
-        <SignOutBtn onClick={handleClick}>
+        <SignOutBtn onClick={handleClick} id="signOutBtn">
           <BtnContent>
             <LogoutVariantIcon />
             <span>Sign out</span>

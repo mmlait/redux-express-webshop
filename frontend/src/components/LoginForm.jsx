@@ -70,7 +70,7 @@ const customLoginField = ({
 let LoginForm = ({ handleSubmit, toggleLoginAndRegisterFormsAction }) =>{
 
   return (
-    <LoginFormWrapper onSubmit={handleSubmit}>
+    <LoginFormWrapper onSubmit={handleSubmit} id="loginForm">
       <LightHeading>Sign in</LightHeading>
       <label htmlFor="email">Email:</label><br/>
       <StyledField 

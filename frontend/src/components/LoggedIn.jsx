@@ -120,16 +120,16 @@ const LoggedIn = (props) => {
       }
       </BalanceSection>
       { userRole === 1 ? (
-          <ShowAddProductModalBtn onClick={toggleAddProductModal}>
+          <ShowAddProductModalBtn onClick={toggleAddProductModal} id="showAddProductModalBtn">
             <StyledAddIcon id="addIcon" />
           </ShowAddProductModalBtn>
          ) : (
-          <ShowCartBtn onClick={toggleCartModal}>
+          <ShowCartBtn onClick={toggleCartModal} id="showCartBtn">
             <StyledCartIcon id="cartIcon" />
           </ShowCartBtn>
         )
       }
-      <ShowMenuModalBtn onClick={toggleMenuModal}>
+      <ShowMenuModalBtn onClick={toggleMenuModal} id="showMenuModalBtn">
         <StyledDotsIcon id="dotsIcon" />
       </ShowMenuModalBtn>
     </Div>

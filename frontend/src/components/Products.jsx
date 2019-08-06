@@ -75,7 +75,7 @@ class Products extends Component {
 
     return (
       <ProductsWrapper>
-        <LightHeading>Products</LightHeading>
+        <LightHeading id="productsHeading">Products</LightHeading>
         { showMenuModal &&
           <MenuModal />
         }

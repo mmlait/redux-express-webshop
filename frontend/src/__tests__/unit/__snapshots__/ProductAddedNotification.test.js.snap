@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductAddedNotification component should render 1`] = `
+<div
+  className="sc-bdVaJa gtzOcq"
+  id="productAddedNotification"
+>
+  <p>
+    A new product was added!
+  </p>
+</div>
+`;

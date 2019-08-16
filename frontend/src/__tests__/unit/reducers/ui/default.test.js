@@ -13,7 +13,8 @@ describe('Ui reducer', () => {
     showPurchasedModal: false,
     showErrorNotification: false,
     showCustomNotificationModal: false,
-    customNotification: ""
+    customNotification: "",
+    showUserUpdatedNotification: false
   }
   
   it('should return the initial state when an action type is not passed',  () => {

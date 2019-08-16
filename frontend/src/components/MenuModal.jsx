@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import LogoutVariantIcon from 'mdi-react/LogoutVariantIcon';
+import AccountIcon from 'mdi-react/AccountIcon';
 import { signOutUserAction } from '../redux/actions/user';
 import { toggleMenuModalAction } from '../redux/actions/ui';
 import { clearCartAction } from '../redux/actions/order';
@@ -18,16 +20,39 @@ const Wrapper = styled.div`
 
 const CartContent = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding: 10px;
 `
 
-const SignOutBtn = styled.button`
+const LinkToAccountPage = styled(Link)`
   background-color: ${colors.secondary};
+  color: black;
   display: flex;
   justify-content: center;
   padding: 14px 0;
   width: 100%;
+  margin-bottom: 10px;
+  text-decoration: none;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: inset 0px 0px 0px 1.5px ${colors.primary};
+  }
+  &:focus {
+    outline: none;
+  }
+`
+
+const SignOutBtn = styled(Link)`
+  background-color: ${colors.secondary};
+  color: black;
+  display: flex;
+  justify-content: center;
+  padding: 14px 0;
+  width: 100%;
+  text-decoration: none;
   border: none;
   border-radius: 15px;
   cursor: pointer;
@@ -44,6 +69,8 @@ const BtnContent = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 85px;
+  font-family: "Segoe UI", "Helvetica Neue";
+  font-size: 14px;
 `
 
 const MenuModal = (props) => {
@@ -62,7 +89,13 @@ const MenuModal = (props) => {
   return (
     <Wrapper>
       <CartContent>
-        <SignOutBtn onClick={handleClick} id="signOutBtn">
+        <LinkToAccountPage to="/account" onClick={toggleMenuModal}>
+          <BtnContent>
+            <AccountIcon />
+            <span>Account</span>
+          </BtnContent>
+        </LinkToAccountPage>
+        <SignOutBtn to="/" onClick={handleClick} id="signOutBtn">
           <BtnContent>
             <LogoutVariantIcon />
             <span>Sign out</span>

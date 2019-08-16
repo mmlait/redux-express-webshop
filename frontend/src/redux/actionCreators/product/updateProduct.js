@@ -15,7 +15,7 @@ export function updateProduct(product, productId) {
     let updatedProduct = {
       productName: product.productName,
       price: product.price,
-      quantity:product.quantity
+      quantity: product.quantity
     }
 
     axios.put(`http://127.0.0.1:2000/api/products/update?id=${productId}`, updatedProduct, token)

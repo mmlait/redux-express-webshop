@@ -12,7 +12,8 @@ const initialState = {
   showPurchasedModal: false,
   showErrorNotification: false,
   showCustomNotificationModal: false,
-  customNotification: ""
+  customNotification: "",
+  showUserUpdatedNotification: false
 }
 
 export default function Ui(state=initialState, action) {
@@ -68,10 +69,10 @@ export default function Ui(state=initialState, action) {
       }
 
     case UiActionTypes.SHOW_PURCHASED_NOTIFICATION:
-    return {
-      ...state,
-      showPurchasedModal: !state.showPurchasedModal
-    }
+      return {
+        ...state,
+        showPurchasedModal: !state.showPurchasedModal
+      }
 
     case UiActionTypes.SHOW_ERROR_NOTIFICATION:
       return {
@@ -80,16 +81,22 @@ export default function Ui(state=initialState, action) {
       }
 
     case UiActionTypes.SHOW_CUSTOM_NOTIFICATION_MODAL:
-    return {
-      ...state,
-      showCustomNotificationModal: !state.showCustomNotificationModal
-    }
+      return {
+        ...state,
+        showCustomNotificationModal: !state.showCustomNotificationModal
+      }
 
     case UiActionTypes.SET_CUSTOM_NOTIFICATION:
-    return {
-      ...state,
-      customNotification: action.customNotification
-    }
+      return {
+        ...state,
+        customNotification: action.customNotification
+      }
+
+    case UiActionTypes.SHOW_USER_UPDATED_NOTIFICATION:
+      return {
+        ...state,
+        showUserUpdatedNotification: !state.showUserUpdatedNotification
+      }
 
     default:
       return state;

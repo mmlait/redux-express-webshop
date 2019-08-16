@@ -157,9 +157,9 @@ const validator = values => {
   const onSubmit = (values, dispatch) => {
     let user;
     if(values.employee === true) {
-      user = {...values, "role": 1, "balance": 0}
+      user = {...values, 'role': 1, 'balance': 0}
     } else {
-      user = {...values, "balance": 100}
+      user = {...values, 'balance': 100}
     }
       // remove confirmPassword value from values
       const {confirmPassword, ...valuesWithoutConfirmPassword} = user;

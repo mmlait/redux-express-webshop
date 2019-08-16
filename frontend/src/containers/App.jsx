@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
-import { createGlobalStyle } from 'styled-components';
+import { Switch, Route } from 'react-router-dom'
+import styled, { createGlobalStyle } from 'styled-components';
 import Footer from '../components/Footer.jsx';
 import LoginOrRegister from '../components/LoginOrRegister.jsx';
 import Products from '../components/Products.jsx';
-import LoggedIn from '../components/LoggedIn.jsx';
+import ProductsNav from '../components/ProductsNav.jsx';
+import Account from '../components/Account.jsx';
+import AccountNav from '../components/AccountNav.jsx';
+import Modal from '../components/Modal.jsx';
+import CustomNotification from '../components/CustomNotification.jsx';
+import ErrorNotification from '../components/ErrorNotification';
 import colors from '../colors';
 import '../index.css';
 
@@ -46,6 +51,7 @@ const TopBar = styled.nav`
   color: ${colors.fontLight};
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   height: 50px;
   text-align: center;
   margin: 0 auto;
@@ -61,7 +67,7 @@ const TopBarSection2 = styled.div`
 `
 
 const ShopName = styled.p`
-  color: white;
+  color: ${colors.fontLight};
   font-weight: bold;
 `
 
@@ -72,7 +78,12 @@ const MainContent = styled.div`
 
 class App extends Component {
   render() {
-    const userLoggedIn = this.props.isLoggedIn;
+    const {
+      isLoggedIn,
+      showCustomNotificationModal,
+      showErrorNotification,
+    } = this.props;
+    
     return (
       <AppWrapper>
       <GlobalStyle />
@@ -81,18 +92,33 @@ class App extends Component {
             <ShopName>Webshop</ShopName>
           </TopBarSection1>
           <TopBarSection2>
-            {
-              userLoggedIn &&
-              <LoggedIn />
+            { isLoggedIn &&
+              <Switch>
+                <Route exact path='/' component={ProductsNav}/>
+                <Route path='/account' component={AccountNav}/>
+              </Switch>
             }
           </TopBarSection2>
         </TopBar>
         <MainContent>
-          { userLoggedIn ? (
-              <Products />
+          { isLoggedIn ? (
+              <Switch>
+                <Route exact path='/' component={Products}/>
+                <Route path='/account' component={Account}/>
+              </Switch>
             ) : (
-              <LoginOrRegister />
+              <Route exact path='/' component={LoginOrRegister}/>
             )
+          }
+          { showCustomNotificationModal &&
+            <Modal content={
+              <CustomNotification />
+            }/>
+          }
+          { showErrorNotification &&
+            <Modal content={
+              <ErrorNotification />
+            }/>
           }
         </MainContent>
         <Footer />
@@ -104,6 +130,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.User.isLoggedIn,
+    showCustomNotificationModal: state.Ui.showCustomNotificationModal,
+    showErrorNotification: state.Ui.showErrorNotification
   }
 }
 

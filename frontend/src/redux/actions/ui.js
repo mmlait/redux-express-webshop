@@ -72,3 +72,9 @@ export const setCustomNotificationAction = (notification) => {
     customNotification: notification
   };
 }
+
+export const toggleUserUpdatedNotificationAction = () => {
+  return {
+    type: UiActionTypes.SHOW_USER_UPDATED_NOTIFICATION
+  };
+}

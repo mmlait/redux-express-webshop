@@ -4,9 +4,6 @@ import styled from 'styled-components';
 import { toggleLoginAndRegisterFormsAction } from '../redux/actions/ui';
 import RegisterForm from './RegisterForm.jsx';
 import LoginForm from './LoginForm.jsx';
-import Modal from './Modal.jsx';
-import CustomNotification from './CustomNotification.jsx';
-import ErrorNotification from './ErrorNotification.jsx';
 
 const FormWrapper = styled.div`
   margin: 100px auto;
@@ -20,8 +17,6 @@ const FormWrapper = styled.div`
 const LoginOrRegister = (props) => {
   const {
     showRegisterForm,
-    showCustomNotificationModal,
-    showErrorNotification,
     toggleLoginAndRegisterForms
   } = props;
 
@@ -38,17 +33,6 @@ const LoginOrRegister = (props) => {
         />
       )
     }
-    { showCustomNotificationModal &&
-        <Modal content={
-          <CustomNotification />
-        }/>
-      }
-    {
-      showErrorNotification &&
-      <Modal content={
-        <ErrorNotification />
-      } />
-    }
   </FormWrapper>
   );
 }
@@ -56,8 +40,6 @@ const LoginOrRegister = (props) => {
 const mapStateToProps = (state) => {
   return {
     showRegisterForm: state.Ui.showRegisterForm,
-    showCustomNotificationModal: state.Ui.showCustomNotificationModal,
-    showErrorNotification: state.Ui.showErrorNotification
   }
 }
 

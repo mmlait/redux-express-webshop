@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toggleUserUpdatedNotification } from '../../actionCreators/ui/toggleUserUpdatedNotification';
 import { updateUserAction } from '../../actions/user';
 import { toggleErrorNotificationAction } from '../../actions/ui';
 
@@ -16,6 +17,7 @@ export function updateUser(user) {
     .then( response =>{
       if(response) {
         let updatedUser = {...response.data, token: authToken};
+        dispatch(toggleUserUpdatedNotification());
         dispatch(updateUserAction(updatedUser));
       }
     })

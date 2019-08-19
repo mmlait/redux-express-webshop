@@ -10,7 +10,10 @@ import colors from '../colors';
 
 const AccountPageWrapper = styled.div`
   margin: 70px auto;
-  width: 80%;
+  width: 100%;
+  @media (min-width: 400px) {
+    width: 80%;
+  }
 `
 
 const AccountHeadingWrapper = styled.div`
@@ -18,6 +21,9 @@ const AccountHeadingWrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 450px;
 `
 
 const StyledLightHeading = styled(LightHeading)`

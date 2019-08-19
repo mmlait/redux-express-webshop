@@ -10,11 +10,13 @@ After the purchase, the customer will receive an order confirmation email. Produ
 updated after purchase. Once a day, $100 in store credit will be transferred to the clients' account.
 Employees can add, remove, and edit products. 
 
-<img src="customer-gif.gif" width="280"/>
+<img src="customer.gif" width="280"/>
 
-<img src="employee-gif.gif" width="280"/>
+<img src="employee.gif" width="280"/>
 
-<img src="registerForm-error-gif.gif" width="280"/>
+<img src="account.gif" width="280"/>
+
+<img src="registerForm-error.gif" width="280"/>
 
 
                                             Documentation

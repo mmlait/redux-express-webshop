@@ -12,7 +12,8 @@ const AccountFormWrapper = styled.form`
   color: ${colors.fontDark};
   padding: 30px;
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
+  max-width: 450px;
   border-radius: 15px;
 `
 

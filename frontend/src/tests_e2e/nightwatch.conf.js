@@ -1,5 +1,5 @@
 module.exports = {
-  "src_folders" : ["src/__tests__/e2e"],
+  "src_folders" : ["src/tests_e2e"],
 
   "webdriver" : {
     "start_process": true,

@@ -25,3 +25,10 @@ export const unMarkProductForUpdatingAction = () => {
     productToBeUpdated: {}
   };
 }
+
+export const sortProductsAction = productList => {
+  return {
+    type: ProductActionTypes.SORT_PRODUCTS,
+    productList: productList
+  };
+}

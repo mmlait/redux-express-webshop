@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ArrowLeftCircleIcon from 'mdi-react/ArrowLeftCircleIcon';
 import AccountForm from './AccountForm.jsx';
@@ -54,11 +54,11 @@ const BackBtn = styled(Link)`
   }
 `
 
-const EmptyDiv = styled.div`
+const HeadingTextWrapper = styled.div`
   width: 30%;
 `
 
-const HeadingTextWrapper = styled.div`
+const EmptyDiv = styled.div`
   width: 30%;
 `
 

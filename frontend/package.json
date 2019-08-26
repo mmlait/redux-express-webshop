@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "nightwatch": "nightwatch -c src/__tests__/e2e/nightwatch.conf.js"
+    "nightwatch": "nightwatch -c src/tests_e2e/nightwatch.conf.js"
   },
   "eslintConfig": {
     "extends": "react-app"

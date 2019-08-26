@@ -23,6 +23,13 @@ export default function Product(state=initialState, action) {
       };
     }
 
+    case ProductActionTypes.SORT_PRODUCTS: {
+      return {
+        ...state,
+        productList: action.productList
+      };
+    }
+
     default:
       return state;
 

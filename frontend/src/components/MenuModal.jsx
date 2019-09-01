@@ -89,7 +89,7 @@ const MenuModal = (props) => {
   return (
     <Wrapper>
       <CartContent>
-        <LinkToAccountPage to="/account" onClick={toggleMenuModal}>
+        <LinkToAccountPage to="/account" onClick={toggleMenuModal} id="toAccountPageBtn">
           <BtnContent>
             <AccountIcon />
             <span>Account</span>

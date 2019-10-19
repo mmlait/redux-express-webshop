@@ -2,6 +2,7 @@ import * as ProductActionTypes from '../actionTypes/product';
 
 const initialState = {
   productList: [],
+  searchSuggestions: [],
   searchResultList: [],
   productToBeUpdated: {}
 }
@@ -28,6 +29,13 @@ export default function Product(state=initialState, action) {
       return {
         ...state,
         productList: action.productList
+      };
+    }
+
+    case ProductActionTypes.SHOW_SEARCH_SUGGESTIONS: {
+      return {
+        ...state,
+        searchSuggestions: action.searchSuggestions
       };
     }
 

@@ -1,0 +1,19 @@
+import { searchSuggestionsAction } from '../../actions/product';
+
+export const showSearchSuggestions = (q) => (dispatch, getState) => {
+  const state = getState();
+  let products = state.Product.productList;
+  let searchSuggestions = [];
+  let i;
+  if(q === '' || q === ' ') {
+    searchSuggestions = [];
+    dispatch(searchSuggestionsAction(searchSuggestions));
+  } else {
+    for (i = 0; i < products.length; i++) {
+      if (products[i].productName.toLowerCase().includes(q)) {
+        searchSuggestions.push(products[i]);
+      }
+    }
+    dispatch(searchSuggestionsAction(searchSuggestions));
+  }
+}

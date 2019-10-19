@@ -11,6 +11,7 @@ const colors = {
   btnLightHover: '#bbd9cf',
   formFieldBorder: 'lightgrey',
   navIconHoverBg: '#ffffff44',
+  searchSuggestionHoverBg: '#bbd9cf',
   greenModalBg: '#59d779',
   modalBgOverlay: 'rgba(0,0,0,0.4)'
 }

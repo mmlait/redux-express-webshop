@@ -33,6 +33,13 @@ export const sortProductsAction = productList => {
   };
 }
 
+export const searchSuggestionsAction = searchSuggestions => {
+  return {
+    type: ProductActionTypes.SHOW_SEARCH_SUGGESTIONS,
+    searchSuggestions: searchSuggestions
+  };
+}
+
 export const searchProductsAction = searchResultList => {
   return {
     type: ProductActionTypes.SEARCH_PRODUCTS,

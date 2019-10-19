@@ -5,6 +5,7 @@ import SearchIcon from 'mdi-react/SearchIcon';
 import { sortProductsByCreatedDate } from '../redux/actionCreators/product/sortProductsByCreatedDate';
 import { sortProductsByLowestPrice } from '../redux/actionCreators/product/sortProductsByLowestPrice';
 import { sortProductsByHighestPrice } from '../redux/actionCreators/product/sortProductsByHighestPrice';
+import { showSearchSuggestions } from '../redux/actionCreators/product/showSearchSuggestions'
 import { searchProducts } from '../redux/actionCreators/product/searchProducts'
 import ShoppingCart from './ShoppingCart.jsx';
 import Product from './/Product.jsx';
@@ -86,7 +87,11 @@ const HeadingTextWrapper = styled.div`
 const SearchDiv = styled.div`
   width: 30%;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+`
+
+const SearchBarDiv = styled.div`
+  display: flex;
 `
 
 const SearchBarInput = styled.input`
@@ -94,6 +99,7 @@ const SearchBarInput = styled.input`
   padding: 10px;
   border: none;
   border-radius: 5px 0 0 5px;
+  width: 100%;
   &:focus {
     outline: none;
   }
@@ -111,6 +117,26 @@ const SearchBtn = styled.button`
   }
   &:focus {
     outline: none;
+  }
+`
+
+const SearchSuggestionsList = styled.ul`
+  background-color: ${colors.secondary};
+  list-style-type: none;
+  position: absolute;
+  margin: 0;
+  margin-top: 38px;
+  padding: 0;
+  width: 27.5%;
+  border-radius: 5px;
+  border: ${props => props.hasSuggestions ? `1px solid ${colors.searchSuggestionHoverBg}`: "none"};
+`
+const Suggestion = styled.li`
+  list-style-type: none;
+  padding: 0 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: ${colors.searchSuggestionHoverBg};
   }
 `
 
@@ -146,6 +172,7 @@ class Products extends Component {
   render() {
     const {
       products,
+      searchSuggestions,
       searchResults,
       showAddProductModal,
       showProductAddedNotification,
@@ -158,6 +185,7 @@ class Products extends Component {
       sortProductsByCreatedDate,
       sortProductsByLowestPrice,
       sortProductsByHighestPrice,
+      showSearchSuggestions,
       searchProducts
     } = this.props;
 
@@ -177,12 +205,28 @@ class Products extends Component {
       searchProducts(inputValue);
     }
 
+    function handleInputValueChange (e) {
+      let inputValue = e.target.value;
+      showSearchSuggestions(inputValue);
+      if(e.keyCode === 13) {
+        searchProducts(inputValue);
+      }
+    }
+
     const productComponents = products.map((product, index) => (
       <Product
         index={index}
         key={product.id.toString()}
         data={product}
       />
+    ));
+
+    const searchSuggestionComponents = searchSuggestions.map((product, index) => (
+      <Suggestion
+        index={index}
+        key={product.id.toString()}
+      >{product.productName}
+      </Suggestion>
     ));
 
     const searchResultComponents = searchResults.map((product, index) => (
@@ -208,13 +252,20 @@ class Products extends Component {
             <LightHeading id="productsHeading">Products</LightHeading>
           </HeadingTextWrapper>
           <SearchDiv>
-            <SearchBarInput onKeyUp={searchProducts} id="searchInput" placeholder="Search Products">
-            </SearchBarInput>
-            <SearchBtn onClick={handleSearchBtnClick}>
-              <SearchIcon />
-            </SearchBtn>
+            <SearchBarDiv>
+              <SearchBarInput onKeyUp={handleInputValueChange} id="searchInput" placeholder="Search Products">
+              </SearchBarInput>
+              <SearchBtn onClick={handleSearchBtnClick}>
+                <SearchIcon />
+              </SearchBtn>
+            </SearchBarDiv>
+            <SearchSuggestionsList hasSuggestions={searchSuggestionComponents.length > 0}>
+              { searchSuggestionComponents }
+            </SearchSuggestionsList>
           </SearchDiv>
+          
         </ProductsHeadingWrapper>
+          
         { showAddProductModal &&
           <ModalLight content={
             <AddProductForm />
@@ -267,6 +318,7 @@ class Products extends Component {
 const mapStateToProps = (state) => {
   return {
     products: state.Product.productList,
+    searchSuggestions: state.Product.searchSuggestions,
     searchResults: state.Product.searchResultList,
     showAddProductModal: state.Ui.showAddProductModal,
     showProductAddedNotification: state.Ui.showProductAddedNotification,
@@ -289,6 +341,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     sortProductsByHighestPrice: () => {
       dispatch(sortProductsByHighestPrice())
+    },
+    showSearchSuggestions: (q) => {
+      dispatch(showSearchSuggestions(q))
     },
     searchProducts: (keyword) => {
       dispatch(searchProducts(keyword))

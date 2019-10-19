@@ -32,3 +32,10 @@ export const sortProductsAction = productList => {
     productList: productList
   };
 }
+
+export const searchProductsAction = searchResultList => {
+  return {
+    type: ProductActionTypes.SEARCH_PRODUCTS,
+    searchResultList: searchResultList
+  };
+}

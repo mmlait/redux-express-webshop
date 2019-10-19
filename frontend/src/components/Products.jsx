@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import SearchIcon from 'mdi-react/SearchIcon';
 import { sortProductsByCreatedDate } from '../redux/actionCreators/product/sortProductsByCreatedDate';
 import { sortProductsByLowestPrice } from '../redux/actionCreators/product/sortProductsByLowestPrice';
 import { sortProductsByHighestPrice } from '../redux/actionCreators/product/sortProductsByHighestPrice';
+import { searchProducts } from '../redux/actionCreators/product/searchProducts'
 import ShoppingCart from './ShoppingCart.jsx';
 import Product from './/Product.jsx';
 import ProductAddedNotification from './ProductAddedNotification';
@@ -81,8 +83,35 @@ const HeadingTextWrapper = styled.div`
   width: 30%;
 `
 
-const EmptyDiv = styled.div`
+const SearchDiv = styled.div`
   width: 30%;
+  display: flex;
+  justify-content: flex-end;
+`
+
+const SearchBarInput = styled.input`
+  background-color: ${colors.secondary};
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  &:focus {
+    outline: none;
+  }
+`
+
+const SearchBtn = styled.button`
+  background-color: ${colors.primaryLight};
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  &:hover {
+    background-color: ${colors.primary};
+  }
+  &:focus {
+    outline: none;
+  }
 `
 
 const ListWrapper = styled.div`
@@ -117,6 +146,7 @@ class Products extends Component {
   render() {
     const {
       products,
+      searchResults,
       showAddProductModal,
       showProductAddedNotification,
       productToBeUpdated,
@@ -127,14 +157,35 @@ class Products extends Component {
       showPurchasedModal,
       sortProductsByCreatedDate,
       sortProductsByLowestPrice,
-      sortProductsByHighestPrice
+      sortProductsByHighestPrice,
+      searchProducts
     } = this.props;
 
+    const showAllProducts = () => {
+      if (searchResults.length === 0) {
+        return true;
+      }
+      return false;
+    };
+
     function handleClick () {
-      document.getElementById("myDropdown").classList.toggle("show");
+      document.getElementById("sortDropdown").classList.toggle("show");
+    }
+
+    function handleSearchBtnClick () {
+      let inputValue = document.getElementById("searchInput").value;
+      searchProducts(inputValue);
     }
 
     const productComponents = products.map((product, index) => (
+      <Product
+        index={index}
+        key={product.id.toString()}
+        data={product}
+      />
+    ));
+
+    const searchResultComponents = searchResults.map((product, index) => (
       <Product
         index={index}
         key={product.id.toString()}
@@ -147,7 +198,7 @@ class Products extends Component {
         <ProductsHeadingWrapper>
           <SortDropdown>
             <DropBtn onClick={handleClick}>Sort By</DropBtn>
-            <DropdownContent id="myDropdown">
+            <DropdownContent id="sortDropdown">
               <DropdownLink onClick={sortProductsByCreatedDate}>Newest Arrivals</DropdownLink>
               <DropdownLink onClick={sortProductsByLowestPrice}>Price: Low to High</DropdownLink>
               <DropdownLink onClick={sortProductsByHighestPrice}>Price: High to Low</DropdownLink>
@@ -156,7 +207,13 @@ class Products extends Component {
           <HeadingTextWrapper>
             <LightHeading id="productsHeading">Products</LightHeading>
           </HeadingTextWrapper>
-          <EmptyDiv></EmptyDiv>
+          <SearchDiv>
+            <SearchBarInput onKeyUp={searchProducts} id="searchInput" placeholder="Search Products">
+            </SearchBarInput>
+            <SearchBtn onClick={handleSearchBtnClick}>
+              <SearchIcon />
+            </SearchBtn>
+          </SearchDiv>
         </ProductsHeadingWrapper>
         { showAddProductModal &&
           <ModalLight content={
@@ -191,7 +248,16 @@ class Products extends Component {
           <PurchasedNotification />
         }
         <ListWrapper>
-          { productComponents }
+          { (products && showAllProducts()) && 
+            <Fragment>
+              { productComponents }
+            </Fragment>
+          }
+          { (products && !showAllProducts()) && 
+            <Fragment>
+              { searchResultComponents }
+            </Fragment>
+          }
         </ListWrapper>
       </ProductsWrapper>
     );
@@ -201,6 +267,7 @@ class Products extends Component {
 const mapStateToProps = (state) => {
   return {
     products: state.Product.productList,
+    searchResults: state.Product.searchResultList,
     showAddProductModal: state.Ui.showAddProductModal,
     showProductAddedNotification: state.Ui.showProductAddedNotification,
     productToBeUpdated: state.Product.productToBeUpdated,
@@ -222,7 +289,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     sortProductsByHighestPrice: () => {
       dispatch(sortProductsByHighestPrice())
-    }
+    },
+    searchProducts: (keyword) => {
+      dispatch(searchProducts(keyword))
+    },
   }
 };
 

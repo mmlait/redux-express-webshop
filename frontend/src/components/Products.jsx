@@ -26,19 +26,31 @@ const ProductsWrapper = styled.div`
 
 const ProductsHeadingWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
   width: 92%;
+  max-width: 300px;
+  @media (min-width: 763px) {
+    flex-direction: row;
+    max-width: none;
+  }
 `
 
 const SortDropdown = styled.div`
   position: relative;
   display: inline-block;
-  width: 30%;
-  align-self: left;
+  width: 100%;
+  margin-top: 15px;
+  order: 3;
+  @media (min-width: 763px) {
+    width: 30%;
+    margin: 0;
+    order: 1;
+  }
 `
 
 const DropBtn = styled.button`
@@ -46,8 +58,10 @@ const DropBtn = styled.button`
   color: ${colors.fontDark};
   padding-top: 10px;
   padding-bottom: 10px;
-  width: 50%;
+  width: 70%;
+  max-width: 150px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
   &:hover {
     background-color: ${colors.btnLightHover};
@@ -81,13 +95,22 @@ const DropdownLink = styled.button`
 `
 
 const HeadingTextWrapper = styled.div`
-  width: 30%;
+  order: 1;
+  @media (min-width: 763px) {
+    width: 30%;
+    order: 2;
+  }
 `
 
 const SearchDiv = styled.div`
-  width: 30%;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  order: 2;
+  @media (min-width: 763px) {
+    width: 30%;
+    order: 3;
+  }
 `
 
 const SearchBarDiv = styled.div`
@@ -157,7 +180,7 @@ const ListWrapper = styled.div`
     width: 75%;
   }
   @media (min-width: 950px) {
-    width: 68%;
+    width: 70%;
   }
   @media (min-width: 1050px) {
     width: 64%;

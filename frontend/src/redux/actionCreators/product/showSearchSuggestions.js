@@ -10,7 +10,7 @@ export const showSearchSuggestions = (q) => (dispatch, getState) => {
     dispatch(searchSuggestionsAction(searchSuggestions));
   } else {
     for (i = 0; i < products.length; i++) {
-      if (products[i].productName.toLowerCase().includes(q)) {
+      if (products[i].productName.toLowerCase().includes(q.toLowerCase())) {
         searchSuggestions.push(products[i]);
       }
     }

@@ -7,13 +7,14 @@ export const showSearchSuggestions = (q) => (dispatch, getState) => {
   let i;
   if(q === '' || q === ' ') {
     searchSuggestions = [];
-    dispatch(searchSuggestionsAction(searchSuggestions));
+    q = ''
+    dispatch(searchSuggestionsAction(searchSuggestions, q));
   } else {
     for (i = 0; i < products.length; i++) {
       if (products[i].productName.toLowerCase().includes(q.toLowerCase())) {
         searchSuggestions.push(products[i]);
       }
     }
-    dispatch(searchSuggestionsAction(searchSuggestions));
+    dispatch(searchSuggestionsAction(searchSuggestions, q));
   }
 }

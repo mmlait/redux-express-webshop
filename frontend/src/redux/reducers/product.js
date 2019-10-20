@@ -3,6 +3,7 @@ import * as ProductActionTypes from '../actionTypes/product';
 const initialState = {
   productList: [],
   searchSuggestions: [],
+  searchInputValue: "",
   searchResultList: [],
   productToBeUpdated: {}
 }
@@ -35,14 +36,27 @@ export default function Product(state=initialState, action) {
     case ProductActionTypes.SHOW_SEARCH_SUGGESTIONS: {
       return {
         ...state,
-        searchSuggestions: action.searchSuggestions
+        searchSuggestions: action.searchSuggestions,
+        searchInputValue: action.searchInputValue
       };
     }
 
     case ProductActionTypes.SEARCH_PRODUCTS: {
       return {
         ...state,
-        searchResultList: action.searchResultList
+        searchInputValue: action.searchInputValue,
+        searchResultList: action.searchResultList,
+        searchSuggestions: []
+      };
+    }
+
+    case ProductActionTypes.CLEAR_SEARCH_RESULTS: {
+      return {
+        ...state,
+        searchSuggestions: [],
+        searchInputValue: "",
+        searchResultList: [],
+        productToBeUpdated: {}
       };
     }
 

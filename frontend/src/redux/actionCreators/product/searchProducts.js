@@ -7,14 +7,15 @@ export const searchProducts = (keyword) => (dispatch, getState) => {
   let i;
   if(keyword === '' || keyword === ' ') {
     searchResults = [];
-    dispatch(searchProductsAction(searchResults));
+    keyword = '';
+    dispatch(searchProductsAction(keyword, searchResults));
   } else {
       for (i = 0; i < products.length; i++) {
         if (products[i].productName.toLowerCase().includes(keyword.toLowerCase())) {
           searchResults.push(products[i]);
         }
       }
-      dispatch(searchProductsAction(searchResults));
+      dispatch(searchProductsAction(keyword, searchResults));
     }
 
 }

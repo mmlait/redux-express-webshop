@@ -33,16 +33,24 @@ export const sortProductsAction = productList => {
   };
 }
 
-export const searchSuggestionsAction = searchSuggestions => {
+export const searchSuggestionsAction = (searchSuggestions, searchInputValue) => {
   return {
     type: ProductActionTypes.SHOW_SEARCH_SUGGESTIONS,
-    searchSuggestions: searchSuggestions
+    searchSuggestions: searchSuggestions,
+    searchInputValue: searchInputValue
   };
 }
 
-export const searchProductsAction = searchResultList => {
+export const searchProductsAction = (keyword, searchResultList) => {
   return {
     type: ProductActionTypes.SEARCH_PRODUCTS,
+    searchInputValue: keyword,
     searchResultList: searchResultList
+  };
+}
+
+export const clearSearchResultsAction = () => {
+  return {
+    type: ProductActionTypes.CLEAR_SEARCH_RESULTS
   };
 }

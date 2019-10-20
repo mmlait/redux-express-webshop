@@ -75,13 +75,15 @@ const DropdownContent = styled.div`
   background-color: ${colors.primaryLight};
   display: none;
   position: absolute;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  margin-top: 2px;
+  min-width: 160px;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 `
 
 const DropdownLink = styled.button`
-  background-color: ${colors.primaryLight};
+  background-color: transparent;
   padding: 5px 16px;
   width: 100%;
   cursor: pointer;
@@ -196,6 +198,7 @@ class Products extends Component {
     const {
       products,
       searchSuggestions,
+      searchInputValue,
       searchResults,
       showAddProductModal,
       showProductAddedNotification,
@@ -229,6 +232,7 @@ class Products extends Component {
     }
 
     function handleInputValueChange (e) {
+      e.preventDefault()
       let inputValue = e.target.value;
       showSearchSuggestions(inputValue);
       if(e.keyCode === 13) {
@@ -276,15 +280,22 @@ class Products extends Component {
           </HeadingTextWrapper>
           <SearchDiv>
             <SearchBarDiv>
-              <SearchBarInput onKeyUp={handleInputValueChange} id="searchInput" placeholder="Search Products">
-              </SearchBarInput>
+              <SearchBarInput 
+                onChange={handleInputValueChange} 
+                id="searchInput" 
+                placeholder="Search Products" 
+                value={searchInputValue}
+              />
               <SearchBtn onClick={handleSearchBtnClick}>
                 <SearchIcon />
               </SearchBtn>
             </SearchBarDiv>
-            <SearchSuggestionsList hasSuggestions={searchSuggestionComponents.length > 0}>
-              { searchSuggestionComponents }
-            </SearchSuggestionsList>
+            {
+              searchSuggestions &&
+              <SearchSuggestionsList hasSuggestions={searchSuggestionComponents.length > 0}>
+                { searchSuggestionComponents }
+              </SearchSuggestionsList>
+            }
           </SearchDiv>
           
         </ProductsHeadingWrapper>
@@ -342,6 +353,7 @@ const mapStateToProps = (state) => {
   return {
     products: state.Product.productList,
     searchSuggestions: state.Product.searchSuggestions,
+    searchInputValue: state.Product.searchInputValue,
     searchResults: state.Product.searchResultList,
     showAddProductModal: state.Ui.showAddProductModal,
     showProductAddedNotification: state.Ui.showProductAddedNotification,

@@ -7,6 +7,7 @@ import AccountIcon from 'mdi-react/AccountIcon';
 import { signOutUserAction } from '../redux/actions/user';
 import { toggleMenuModalAction } from '../redux/actions/ui';
 import { clearCartAction } from '../redux/actions/order';
+import { clearSearchResultsAction } from '../redux/actions/product';
 import colors from '../colors';
 
 const Wrapper = styled.div`
@@ -77,13 +78,15 @@ const MenuModal = (props) => {
   const {
     signOutUser,
     toggleMenuModal,
-    clearCart
+    clearCart,
+    clearSearchResults
   } = props;
 
   function handleClick () {
     signOutUser();
     toggleMenuModal();
     clearCart();
+    clearSearchResults();
   }
 
   return (
@@ -116,6 +119,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     clearCart: () => {
       dispatch(clearCartAction())
+    },
+    clearSearchResults: () => {
+      dispatch(clearSearchResultsAction())
     }
   }
 };

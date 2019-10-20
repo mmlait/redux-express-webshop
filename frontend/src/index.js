@@ -13,7 +13,7 @@ import App from './containers/App.jsx';
 const composedEnhancers = compose(
   applyMiddleware(thunk),
   // Uncomment, if you want to use Redux Devtools
-  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 const persistConfig = {

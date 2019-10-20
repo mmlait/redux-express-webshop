@@ -78,3 +78,15 @@ export const toggleUserUpdatedNotificationAction = () => {
     type: UiActionTypes.SHOW_USER_UPDATED_NOTIFICATION
   };
 }
+
+export const showClearSearchInputBtnAction = () => {
+  return {
+    type: UiActionTypes.SHOW_CLEAR_SEARCH_INPUT_BTN
+  };
+}
+
+export const hideClearSearchInputBtnAction = () => {
+  return {
+    type: UiActionTypes.HIDE_CLEAR_SEARCH_INPUT_BTN
+  };
+}

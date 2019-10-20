@@ -13,7 +13,8 @@ const initialState = {
   showErrorNotification: false,
   showCustomNotificationModal: false,
   customNotification: "",
-  showUserUpdatedNotification: false
+  showUserUpdatedNotification: false,
+  showClearSearchInputBtn: false
 }
 
 export default function Ui(state=initialState, action) {
@@ -96,6 +97,18 @@ export default function Ui(state=initialState, action) {
       return {
         ...state,
         showUserUpdatedNotification: !state.showUserUpdatedNotification
+      }
+
+    case UiActionTypes.SHOW_CLEAR_SEARCH_INPUT_BTN:
+      return {
+        ...state,
+        showClearSearchInputBtn: true
+      }
+
+    case UiActionTypes.HIDE_CLEAR_SEARCH_INPUT_BTN:
+      return {
+        ...state,
+        showClearSearchInputBtn: false
       }
 
     default:

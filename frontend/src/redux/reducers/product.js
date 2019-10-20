@@ -50,6 +50,14 @@ export default function Product(state=initialState, action) {
       };
     }
 
+    case ProductActionTypes.CLEAR_SEARCH_INPUT_FIELD: {
+      return {
+        ...state,
+        searchInputValue: "",
+        searchResultList: [],
+      };
+    }
+
     case ProductActionTypes.CLEAR_SEARCH_RESULTS: {
       return {
         ...state,

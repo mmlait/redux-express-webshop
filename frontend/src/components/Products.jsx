@@ -7,6 +7,8 @@ import { sortProductsByLowestPrice } from '../redux/actionCreators/product/sortP
 import { sortProductsByHighestPrice } from '../redux/actionCreators/product/sortProductsByHighestPrice';
 import { showSearchSuggestions } from '../redux/actionCreators/product/showSearchSuggestions'
 import { searchProducts } from '../redux/actionCreators/product/searchProducts'
+import { clearSearchInput } from '../redux/actionCreators/ui/clearSearchInput'
+import { showClearSearchInputBtnAction } from '../redux/actions/ui';
 import ShoppingCart from './ShoppingCart.jsx';
 import Product from './/Product.jsx';
 import ProductAddedNotification from './ProductAddedNotification';
@@ -115,7 +117,7 @@ const SearchDiv = styled.div`
   }
 `
 
-const SearchBarDiv = styled.div`
+const SearchForm = styled.form`
   display: flex;
 `
 
@@ -125,6 +127,17 @@ const SearchBarInput = styled.input`
   border: none;
   border-radius: 5px 0 0 5px;
   width: 100%;
+  &:focus {
+    outline: none;
+  }
+`
+
+const ClearSearchInputBtn = styled.button`
+  background-color: ${colors.secondary};
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
   &:focus {
     outline: none;
   }
@@ -203,16 +216,19 @@ class Products extends Component {
       showAddProductModal,
       showProductAddedNotification,
       productToBeUpdated,
+      clearSearchInputBtnVisible,
       showEditProductModal,
       showCartModal,
       showAddedToCartNotification,
       showPurchaseConfirmationModal,
       showPurchasedModal,
+      showClearSearchInputBtn,
       sortProductsByCreatedDate,
       sortProductsByLowestPrice,
       sortProductsByHighestPrice,
       showSearchSuggestions,
-      searchProducts
+      searchProducts,
+      clearSearchInput
     } = this.props;
 
     const showAllProducts = () => {
@@ -228,7 +244,12 @@ class Products extends Component {
 
     function handleSearchBtnClick () {
       let inputValue = document.getElementById("searchInput").value;
+      showClearSearchInputBtn()
       searchProducts(inputValue);
+    }
+
+    function clearSearchField () {
+      clearSearchInput()
     }
 
     function handleInputValueChange (e) {
@@ -239,6 +260,12 @@ class Products extends Component {
         searchProducts(inputValue);
       }
     }
+
+    function onSubmit (e) {
+      e.preventDefault()
+      searchProducts(searchInputValue);
+    }
+    
 
     const productComponents = products.map((product, index) => (
       <Product
@@ -279,19 +306,26 @@ class Products extends Component {
             <LightHeading id="productsHeading">Products</LightHeading>
           </HeadingTextWrapper>
           <SearchDiv>
-            <SearchBarDiv>
-              <SearchBarInput 
-                onChange={handleInputValueChange} 
-                id="searchInput" 
-                placeholder="Search Products" 
-                value={searchInputValue}
-              />
+            <SearchForm onSubmit={onSubmit}>
+                <SearchBarInput 
+                  onChange={handleInputValueChange} 
+                  id="searchInput" 
+                  placeholder="Search Products" 
+                  value={searchInputValue}
+                  type="text"
+                  autoComplete="off"
+                />
+              { clearSearchInputBtnVisible &&
+                <ClearSearchInputBtn
+                  onClick={clearSearchField}
+                >x
+                </ClearSearchInputBtn>
+              }
               <SearchBtn onClick={handleSearchBtnClick}>
                 <SearchIcon />
               </SearchBtn>
-            </SearchBarDiv>
-            {
-              searchSuggestions &&
+            </SearchForm>
+            { searchSuggestions &&
               <SearchSuggestionsList hasSuggestions={searchSuggestionComponents.length > 0}>
                 { searchSuggestionComponents }
               </SearchSuggestionsList>
@@ -363,6 +397,7 @@ const mapStateToProps = (state) => {
     showAddedToCartNotification: state.Ui.showAddedToCartNotification,
     showPurchaseConfirmationModal: state.Ui.showPurchaseConfirmationModal,
     showPurchasedModal: state.Ui.showPurchasedModal,
+    clearSearchInputBtnVisible: state.Ui.showClearSearchInputBtn
   }
 }
 
@@ -382,6 +417,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     searchProducts: (keyword) => {
       dispatch(searchProducts(keyword))
+    },
+    showClearSearchInputBtn: () => {
+      dispatch(showClearSearchInputBtnAction())
+    },
+    clearSearchInput: () => {
+      dispatch(clearSearchInput())
     },
   }
 };

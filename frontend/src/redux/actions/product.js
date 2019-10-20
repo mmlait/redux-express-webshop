@@ -49,6 +49,12 @@ export const searchProductsAction = (keyword, searchResultList) => {
   };
 }
 
+export const clearSearchInputAction = () => {
+  return {
+    type: ProductActionTypes.CLEAR_SEARCH_INPUT_FIELD,
+  };
+}
+
 export const clearSearchResultsAction = () => {
   return {
     type: ProductActionTypes.CLEAR_SEARCH_RESULTS

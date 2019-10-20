@@ -1,4 +1,8 @@
 import { searchProductsAction } from '../../actions/product';
+import { 
+  showClearSearchInputBtnAction,
+  hideClearSearchInputBtnAction 
+} from '../../actions/ui';
 
 export const searchProducts = (keyword) => (dispatch, getState) => {
   const state = getState();
@@ -9,6 +13,7 @@ export const searchProducts = (keyword) => (dispatch, getState) => {
     searchResults = [];
     keyword = '';
     dispatch(searchProductsAction(keyword, searchResults));
+    dispatch(hideClearSearchInputBtnAction());
   } else {
       for (i = 0; i < products.length; i++) {
         if (products[i].productName.toLowerCase().includes(keyword.toLowerCase())) {
@@ -16,6 +21,7 @@ export const searchProducts = (keyword) => (dispatch, getState) => {
         }
       }
       dispatch(searchProductsAction(keyword, searchResults));
+      dispatch(showClearSearchInputBtnAction());
     }
 
 }

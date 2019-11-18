@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import LogoutVariantIcon from 'mdi-react/LogoutVariantIcon';
 import AccountIcon from 'mdi-react/AccountIcon';
+import { clearSearchInput } from '../redux/actionCreators/ui/clearSearchInput'
 import { signOutUserAction } from '../redux/actions/user';
 import { toggleMenuModalAction } from '../redux/actions/ui';
 import { clearCartAction } from '../redux/actions/order';
@@ -79,7 +80,8 @@ const MenuModal = (props) => {
     signOutUser,
     toggleMenuModal,
     clearCart,
-    clearSearchResults
+    clearSearchResults,
+    clearSearchInput
   } = props;
 
   function handleClick () {
@@ -87,6 +89,7 @@ const MenuModal = (props) => {
     toggleMenuModal();
     clearCart();
     clearSearchResults();
+    clearSearchInput();
   }
 
   return (
@@ -122,6 +125,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     clearSearchResults: () => {
       dispatch(clearSearchResultsAction())
+    },
+    clearSearchInput: () => {
+      dispatch(clearSearchInput())
     }
   }
 };

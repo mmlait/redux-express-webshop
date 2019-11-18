@@ -138,6 +138,9 @@ const ClearSearchInputBtn = styled.button`
   align-items: center;
   border: none;
   cursor: pointer;
+  &:hover {
+    font-weight: bold;
+  }
   &:focus {
     outline: none;
   }
@@ -318,7 +321,7 @@ class Products extends Component {
               { clearSearchInputBtnVisible &&
                 <ClearSearchInputBtn
                   onClick={clearSearchField}
-                >x
+                >&#10005;
                 </ClearSearchInputBtn>
               }
               <SearchBtn onClick={handleSearchBtnClick}>

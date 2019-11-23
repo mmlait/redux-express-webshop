@@ -17,7 +17,7 @@
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
     "mailgun-js": "^0.22.0",
-    "mongoose": "^5.4.11",
+    "mongoose": "^5.7.5",
     "mongoose-float": "^1.0.4",
     "pug": "^2.0.3",
     "sweetalert": "^2.1.2"

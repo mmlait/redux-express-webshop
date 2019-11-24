@@ -130,6 +130,10 @@ const SearchBarInput = styled.input`
   &:focus {
     outline: none;
   }
+  &:focus #searchSuggestionsList {
+    font-weight: bold;
+    visibility:visible;
+  }
 `
 
 const ClearSearchInputBtn = styled.button`
@@ -170,6 +174,7 @@ const SearchSuggestionsList = styled.ul`
   padding: 0;
   width: 27.5%;
   border-radius: 5px;
+  visibility: hidden;
   border: ${props => props.hasSuggestions ? `1px solid ${colors.searchSuggestionHoverBg}`: "none"};
 `
 const Suggestion = styled.li`
@@ -255,6 +260,14 @@ class Products extends Component {
       clearSearchInput()
     }
 
+    function showSuggestions () {
+      document.getElementById('searchSuggestionsList').style.visibility = 'visible'
+    }
+
+    function hideSuggestions () {
+      document.getElementById('searchSuggestionsList').style.visibility = 'hidden'
+    }
+
     function handleInputValueChange (e) {
       e.preventDefault()
       let inputValue = e.target.value;
@@ -312,6 +325,8 @@ class Products extends Component {
             <SearchForm onSubmit={onSubmit}>
                 <SearchBarInput 
                   onChange={handleInputValueChange} 
+                  onFocus={showSuggestions}
+                  onBlur={hideSuggestions}
                   id="searchInput" 
                   placeholder="Search Products" 
                   value={searchInputValue}
@@ -329,7 +344,10 @@ class Products extends Component {
               </SearchBtn>
             </SearchForm>
             { searchSuggestions &&
-              <SearchSuggestionsList hasSuggestions={searchSuggestionComponents.length > 0}>
+              <SearchSuggestionsList 
+                hasSuggestions={searchSuggestionComponents.length > 0}
+                id="searchSuggestionsList"
+              >
                 { searchSuggestionComponents }
               </SearchSuggestionsList>
             }

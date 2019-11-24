@@ -23,5 +23,4 @@ export const searchProducts = (keyword) => (dispatch, getState) => {
       dispatch(searchProductsAction(keyword, searchResults));
       dispatch(showClearSearchInputBtnAction());
     }
-
 }

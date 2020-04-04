@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
+    "kind-of": "^6.0.3",
     "mailgun-js": "^0.22.0",
     "mongoose": "^5.7.5",
     "mongoose-float": "^1.0.4",

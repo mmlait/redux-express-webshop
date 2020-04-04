@@ -10,6 +10,7 @@
   "author": "Miia",
   "license": "ISC",
   "dependencies": {
+    "acorn": "^7.1.1",
     "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.4",
